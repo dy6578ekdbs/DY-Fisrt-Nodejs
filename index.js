@@ -18,12 +18,14 @@ app.get('/', (req, res) => {
   res.send('Hello World! 새해 복 .. 받던가 말던가')
 })
 
+
+//register route
 app.post('/register', (req,res) => {
   //회원 가입에 필요한 정보들을 client에서 가져오면
   // 그것들을 데이터 베이스에 넣는다
 
   const user = new User(req.body);
-
+  
   user.save((err,userInfo)=>{
     if(err) return res.json({success:false, err}) //에러인경우
     return res.status(200).json({ //성공인 경우
